@@ -1,0 +1,15 @@
+services:
+  scraper:
+    build: .
+    volumes:
+      - ./code:/code
+    command: sleep infinity
+  
+  chrome:
+      image: selenium/standalone-chrome:latest
+      hostname: chrome
+      ports:
+        - "5900:5900"
+        - "4444:4444"
+      privileged: true
+      shm_size: 2g
